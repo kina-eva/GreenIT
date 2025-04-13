@@ -1,0 +1,20 @@
+body{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.main{
+    display: flex;
+    gap : 200px;
+
+}
+.left{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom:50px;
+}
+.billet-image{
+    width: 300px;
+}
