@@ -88,3 +88,24 @@ body{
     font-weight: bold ;
     font-size: 22px;
 }
+
+
+#error-message {
+    color: #ff4d4d;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    transition: opacity 0.3s ease;
+  }
+  
+  .error-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .error-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
