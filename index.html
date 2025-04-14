@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu</title>
+    <title>Click'n'Cash</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -11,12 +11,38 @@
     <section>
         <div class="main">
             <div class="left">
-                <h3>Billet: <span class="prix-billet">0</span></h3>
-                <img src="images/monopoly5.jpeg" alt="5 EUR" class="billet-image" onclick="incrementBillet()">
+                <h3>Billet: <span class="argent-total">0</span> €</h3>
+                <img id="billet5" src="images/monopoly5.jpeg" alt="5 EUR" class="billet-image" onclick="incrementBillet()" draggable="false">
+
+                <!-- Billet 100€ caché au début -->
+<img id="billet100" src="images/10monopoly.jpeg" alt="10 EUR" class="billet-image" onclick="incrementBillet()" draggable="false" style="display: none;">
             </div>
-            <div class="right">right</div>
+            <div class="right">
+                <!--for upgrades -->
+                <div class="upgrade" onclick="buyBillet()">
+                    <div class="left-section">
+                        <img src="images/10monopoly.jpeg" alt="100€" class="upgrade-img">
+                    </div>
+                    <div class="mid-section">
+                        <div class="cost-info">
+                            <img src="images/10monopoly.jpeg" alt="10€" class="billet-img">
+                            <p>Prix: <span class="billet-prix">100 €</span></p>
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        Niveau: <span class="billet-niveau"></span>
+                    </div>
+                    <div class="next-level-info">
+                        <p>
+                            + <span class="billet-increase">billets <br> par secondes</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!--ajouter statistiques-->
 
     <script src="index.js"></script>
 </body>
