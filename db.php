@@ -2,7 +2,7 @@
 // Paramètres de connexion à la base de données
 $servername = "localhost";
 $username = "root";
-$password = "root"; 
+$password = "0LnKAZq!x=0a"; 
 $database = "clickncash";
 
 // Connexion

@@ -2,59 +2,42 @@
 session_start();
 require_once 'db.php';
 
-// Vérifier si l'utilisateur est déjà connecté
+// Déjà connecté ? Redirection
 if (isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit();
 }
 
-// Traitement du formulaire de connexion
+// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupération des données du formulaire
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    // Validation des données (basique)
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
     if (empty($email) || empty($password)) {
-        $error = "Tous les champs sont obligatoires";
+        $error = "Tous les champs sont obligatoires.";
     } else {
-        // Vérification des identifiants
         $stmt = $conn->prepare("SELECT id, password FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
-            
-            // Vérification du mot de passe
             if (password_verify($password, $user['password'])) {
-                // Authentification réussie
                 $_SESSION['user_id'] = $user['id'];
-                
-                // Vérifier si l'utilisateur a déjà des stats
-                $checkStats = $conn->prepare("SELECT id FROM stats WHERE user_id = ?");
-                $checkStats->bind_param("i", $user['id']);
-                $checkStats->execute();
-                
-                if ($checkStats->get_result()->num_rows === 0) {
-                    // Créer des stats par défaut
-                    $createStats = $conn->prepare("INSERT INTO stats (user_id) VALUES (?)");
-                    $createStats->bind_param("i", $user['id']);
-                    $createStats->execute();
-                }
-                
+                $_SESSION['user_email'] = $email; // AJOUT ICI !
                 header('Location: index.php');
                 exit();
             } else {
-                $error = "Email ou mot de passe incorrect";
+                $error = "Email ou mot de passe incorrect.";
             }
         } else {
-            $error = "Email ou mot de passe incorrect";
+            $error = "Email ou mot de passe incorrect.";
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -77,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Click'n'Cash</h1>
   </div>
   <div class="header-right">
-    <a href="login.php" class="header-button">Log In</a>
+    <a href="sign_up.php" class="header-button">Sign UPn</a>
   </div>
 </header>
 
