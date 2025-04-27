@@ -1,3 +1,22 @@
+<?php
+session_start();
+require_once 'db.php';
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+// Récupérer les infos de l'utilisateur si nécessaire
+$user_id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT email FROM users WHERE id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$user = $stmt->get_result()->fetch_assoc();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,26 +36,18 @@
     <title>Click'n'Cash</title>
 
     <link rel="stylesheet" href="css/style.css" />
+   
 </head>
 <body>
     <header>
-        <nav id="navbar" class="navbar navbar-expand-lg px-4 navbar-light bg-light">
-            
-            <!-- Left: Logo -->
-            <a class="navbar-brand" href="./index.html">
-              <img class="img-fluid" src="./images/bank.png" alt="Logo Bank" style="height: 100px;">
-            </a>
-            
-            <!-- Center: Title -->
-            <div class="text-center flex-grow-1">
-              <span class="navbar-text fw-bold fs-3">Click'n'Cash</span>
-            </div>
-            
-            <!-- Right: Log In Button -->
-            <div>
-              <a href="./login.html" class="btn btn-primary">Log In</a>
-            </div>
-        </nav>
+    <div class="header-left">
+        <img src="images/bank.jpg" alt="Logo Banque" class="bank-logo">
+        <h1>Click'n'Cash</h1>
+    </div>
+    <div class="header-right">
+        <p class="user-email">Connecté en tant que : kina.elali@gmail.com</p>
+        <button id="logout-btn">Déconnexion</button>
+    </div>
     </header>
 
     <section>
@@ -44,7 +55,12 @@
             <div class="left">
                 <p>Billet <br><span class="argent-total pink-text">0</span> <span class="pink-text">€</span> </p>
                 <img src="images/5monopoly.jpeg" alt="5 EUR" class="billet-image" onclick="incrementBillet()" draggable="false" />
-                <button id="reset-btn">🔁 Réinitialiser le jeu</button>
+                <div class="button-container">
+                    <button id="reset-btn">🔄 Réinitialiser</button>
+                    <button id="save-btn">💾 Sauvegarder</button>
+                </div>
+           
+                <div id="save-message" class="text-center">Partie sauvegardée !</div>
             </div>
 
             <div id="error-message" class="error-hidden">Pas assez d'argent !</div>
