@@ -56,11 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <header>
   <div class="header-left">
-    <img src="images/bank.png" alt="Logo Banque" class="bank-logo">
-    <h1>Click'n'Cash</h1>
+        <a href="index.php">
+            <img src="images/bank.webp" alt="Logo Banque" class="bank-logo">
+        </a>    <h1>Click'n'Cash</h1>
   </div>
   <div class="header-right">
-    <a href="sign_up.php" class="header-button">Sign UPn</a>
+    <a href="sign_up.php" class="header-button">Sign Un</a>
   </div>
 </header>
 

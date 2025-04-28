@@ -74,7 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <header>
   <div class="header-left">
-    <img src="images/bank.png" alt="Logo Banque" class="bank-logo">
+        <a href="index.php">
+            <img src="images/bank.webp" alt="Logo Banque" class="bank-logo">
+        </a>
     <h1>Click'n'Cash</h1>
   </div>
   <div class="header-right">

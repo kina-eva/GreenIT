@@ -19,11 +19,12 @@ let banqueLevel = 0, banqueCost = 100000;
 let currentBilletIndex = 0;
 
 const billetsData = [
-  { valeur: 10, image: "images/10monopoly.jpeg", prix: 100, bpc: 10 },
-  { valeur: 20, image: "images/20monopoly.png", prix: 400, bpc: 20 },
-  { valeur: 50, image: "images/50monopoly.png", prix: 1000, bpc: 50 },
-  { valeur: 100, image: "images/100monopoly.jpeg", prix: 2000, bpc: 100 },
-  { valeur: 500, image: "images/500monopoly.png", prix: 10000, bpc: 500 }
+  { valeur: 5, image: "images/5monopoly.webp", prix: 0, bpc: 5 },
+  { valeur: 10, image: "images/10monopoly.webp", prix: 100, bpc: 10 },
+  { valeur: 20, image: "images/20monopoly.webp", prix: 400, bpc: 20 },
+  { valeur: 50, image: "images/50monopoly.webp", prix: 1000, bpc: 50 },
+  { valeur: 100, image: "images/100monopoly.webp", prix: 2000, bpc: 100 },
+  { valeur: 500, image: "images/500monopoly.webp", prix: 10000, bpc: 500 }
 ];
 
 // === FUNCTIONS ===
@@ -33,12 +34,29 @@ function incrementBillet() {
 }
 
 function buyBillet() {
+  if (currentBilletIndex >= billetsData.length) {
+    showError("Tous les billets sont déjà débloqués !");
+    return;
+  }
+
   const data = billetsData[currentBilletIndex];
+
   if (parsedBillet >= data.prix) {
     parsedBillet -= data.prix;
-    bpc = data.bpc;
-    billetImage.src = data.image;
-    if (currentBilletIndex < billetsData.length - 1) currentBilletIndex++;
+    
+    currentBilletIndex++; // ✅ AVANCER L'INDEX D'ABORD
+
+    if (currentBilletIndex < billetsData.length) {
+      const nextData = billetsData[currentBilletIndex];
+      bpc = nextData.bpc;
+      billetImage.src = nextData.image;
+      billetPrix.textContent = nextData.prix + " €";
+      billetIncrease.textContent = nextData.bpc;
+      billetNiveau.textContent = currentBilletIndex;
+    } else {
+      billetPrix.textContent = "MAX";
+    }
+    
     updateDisplay();
   } else {
     showError("Pas assez d'argent !");
@@ -90,16 +108,24 @@ function startBanqueInterval() {
 function updateBPS() {
   bps = arbreLevel * 100 + banqueLevel * 1000;
 }
-
 function updateDisplay() {
   billet.textContent = Math.floor(parsedBillet);
-  billetPrix.textContent = billetsData[currentBilletIndex]?.prix + " €";
+  
+  // Si ce n'est pas le dernier billet :
+  if (currentBilletIndex < billetsData.length - 1) {
+    billetPrix.textContent = billetsData[currentBilletIndex + 1].prix + " €";
+    document.querySelector(".upgrade-img").src = billetsData[currentBilletIndex + 1].image; // <<< AJOUT ICI
+  } else {
+    billetPrix.textContent = "MAX";
+  }
+
   billetIncrease.textContent = bpc;
   billetNiveau.textContent = currentBilletIndex;
   arbrePrix.textContent = arbreCost + " €";
   arbreNiveau.textContent = arbreLevel;
   banquePrix.textContent = banqueCost + " €";
   banqueNiveau.textContent = banqueLevel;
+  
   updateBPS();
   document.getElementById("bpc-text").textContent = bpc;
   document.getElementById("bps-text").textContent = bps;
@@ -130,6 +156,10 @@ function loadGameLocally() {
     banqueLevel = data.banqueLevel;
     arbreCost = data.arbreCost;
     banqueCost = data.banqueCost;
+
+    // 💥 Ajout important pour l'image
+    billetImage.src = billetsData[currentBilletIndex].image;
+
     updateDisplay();
     startAutoProduction();
   }
@@ -164,6 +194,10 @@ function loadGameFromServer() {
       banqueLevel = data.banqueLevel;
       arbreCost = data.arbreCost;
       banqueCost = data.banqueCost;
+
+      // 💥 Ajout pour l'image correcte
+      billetImage.src = billetsData[currentBilletIndex].image;
+
       updateDisplay();
       startAutoProduction();
     })

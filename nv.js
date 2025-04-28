@@ -35,15 +35,15 @@ let banqueCost = 100000;
 
 // Tableau des billets
 const billetsData = [
-  { valeur: 10, image: "images/10monopoly.jpeg", prix: 100, bpc: 10 },
-  { valeur: 20, image: "images/20monopoly.png", prix: 400, bpc: 20 },
-  { valeur: 50, image: "images/50monopoly.png", prix: 1000, bpc: 50 },
-  { valeur: 100, image: "images/100monopoly.jpeg", prix: 2000, bpc: 100 },
-  { valeur: 500, image: "images/500monopoly.png", prix: 10000, bpc: 500 },
-  { valeur: 1000, image: "images/1000monopoly.jpeg", prix: 20000, bpc: 1000, nom: "Malo" },
-  { valeur: 5000, image: "images/5000monopoly.jpeg", prix: 100000, bpc: 5000, nom: "Valentin" },
-  { valeur: 10000, image: "images/10000monopoly.jpg", prix: 200000, bpc: 10000, nom: "Kina" },
-  { valeur: 50000, image: "images/50000monopoly.jpg", prix: 1000000, bpc: 50000, nom: "Arsène" }
+  { valeur: 10, image: "images/10monopoly.webp", prix: 100, bpc: 10 },
+  { valeur: 20, image: "images/20monopoly.webp", prix: 400, bpc: 20 },
+  { valeur: 50, image: "images/50monopoly.webp", prix: 1000, bpc: 50 },
+  { valeur: 100, image: "images/100monopoly.webp", prix: 2000, bpc: 100 },
+  { valeur: 500, image: "images/500monopoly.webp", prix: 10000, bpc: 500 },
+  { valeur: 1000, image: "images/1000monopoly.webp", prix: 20000, bpc: 1000, nom: "Malo" },
+  { valeur: 5000, image: "images/5000monopoly.webp", prix: 100000, bpc: 5000, nom: "Valentin" },
+  { valeur: 10000, image: "images/10000monopoly.webp", prix: 200000, bpc: 10000, nom: "Kina" },
+  { valeur: 50000, image: "images/50000monopoly.webp", prix: 1000000, bpc: 50000, nom: "Arsène" }
 ];
 
 let currentBilletIndex = 0;
@@ -235,7 +235,7 @@ function loadGame() {
 
   updateBilletDisplay();
 
-  billetImage.src = billetsData[currentBilletIndex - 1]?.image || "images/5monopoly.jpeg";
+  billetImage.src = billetsData[currentBilletIndex - 1]?.image || "images/5monopoly.webp";
   billetImage.alt = billetsData[currentBilletIndex - 1]?.valeur + " EUR" || "5 EUR";
 
   if (arbreLevel > 0) {

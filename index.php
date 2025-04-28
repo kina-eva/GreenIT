@@ -20,6 +20,7 @@ if ($isLoggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Click'n'Cash</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +31,9 @@ if ($isLoggedIn) {
 
 <header>
     <div class="header-left">
-        <img src="images/bank.png" alt="Logo Banque" class="bank-logo">
+        <a href="index.php">
+            <img src="images/bank.webp" alt="Logo Banque" class="bank-logo">
+        </a>      
         <h1>Click'n'Cash</h1>
     </div>
     <div class="header-right">
@@ -47,7 +50,7 @@ if ($isLoggedIn) {
     <div class="main container d-flex justify-content-center">
         <div class="left">
             <p>Billet<br><span class="argent-total pink-text">0</span> <span class="pink-text">€</span></p>
-            <img src="images/5monopoly.jpeg" alt="5 EUR" class="billet-image" onclick="incrementBillet()" draggable="false" />
+            <img src="images/5monopoly.webp" alt="5 EUR" class="billet-image" onclick="incrementBillet()" draggable="false" />
 
             <div class="button-container">
                 <button id="reset-btn">🔄 Réinitialiser</button>
@@ -60,7 +63,7 @@ if ($isLoggedIn) {
         <div class="right">
             <div class="upgrade" onclick="buyBillet()">
                 <div class="left-section">
-                    <img src="images/10monopoly.jpeg" alt="Upgrade" class="upgrade-img" />
+                    <img src="images/10monopoly.webp" alt="Upgrade" class="upgrade-img" />
                 </div>
                 <div class="mid-section">
                     <h4>Billet</h4>
@@ -76,7 +79,7 @@ if ($isLoggedIn) {
 
             <div class="upgrade" onclick="buyArbre()">
                 <div class="left-section">
-                    <img src="images/arbre-argent.jpeg" alt="Upgrade" class="upgrade-img" />
+                    <img src="images/arbre-argent.webp" alt="Upgrade" class="upgrade-img" />
                 </div>
                 <div class="mid-section">
                     <h4>Arbre</h4>
@@ -92,7 +95,7 @@ if ($isLoggedIn) {
 
             <div class="upgrade" onclick="buyBanque()">
                 <div class="left-section">
-                    <img src="images/bank.png" alt="Upgrade" class="upgrade-img" />
+                    <img src="images/bank.webp" alt="Upgrade" class="upgrade-img" />
                 </div>
                 <div class="mid-section">
                     <h4>Banque</h4>
