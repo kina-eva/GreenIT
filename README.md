@@ -6,7 +6,7 @@
 
 ```bash
 # Cloner le dépôt
-git clone https://github.com/[Votre-Organisation]/[Nom-du-Projet].git
+git clone https://github.com/kina-eva/GreenIT.git
 
 # Executer le projet
 Rendez-vous sur le site : http://51.44.222.208/login.php
@@ -24,7 +24,7 @@ Fonctionnalités principales:
 
 - **Front-end** :
   - Framework/Technologie utilisée : Bootstrap
-  - Principales pages : Accueil, Log In, Sign In]
+  - Principales pages : Accueil, Log In, Sign In
 - **Back-end** :
   - Langage / Framework utilisé : Javascript, PHP
 - **Base de données** :
