@@ -1,6 +1,18 @@
-# GreenIT
-Présentation du projet:
-Click'n'Cash est un mini-jeu de type "idle game"
+# 📚 Projet Click'n'Cash
+
+## Principe du projet 
+
+## 🚀 Instructions pour cloner, configurer et exécuter le projet
+
+```bash
+# Cloner le dépôt
+git clone https://github.com/[Votre-Organisation]/[Nom-du-Projet].git
+
+# Executer le projet
+Rendez-vous sur le site : http://51.44.222.208/login.php
+```
+
+## 🧩 Brève description des différentes parties du site
 
 Fonctionnalités principales:
 
@@ -10,17 +22,15 @@ Fonctionnalités principales:
   -Gestion de comptes utilisateurs (connexion / déconnexion).
   -Réinitialisation complète de la progression.
 
-Technologies utilisées:
+- **Front-end** :
+  - Framework/Technologie utilisée : Bootstrap
+  - Principales pages : Accueil, Log In, Sign In]
+- **Back-end** :
+  - Langage / Framework utilisé : Javascript, PHP
+- **Base de données** :
+  - Type de base SQL
 
-  -Front-end : HTML5, CSS3, JavaScript (vanilla)
-  -Back-end : PHP, MySQL
-  -Base de données : MySQL
-  -Environnement de développement : Visual Studio Code
-  -Serveur local : XAMPP
-  -Versionning : Git & GitHub
-  -FTP : FileZilla
-  -Hébergement : AWS (Amazon Web Services)
-
+## 🛠️ Code Source
 Architecture du projet:
 
   /css              → Fichiers de styles (style.css)
@@ -38,7 +48,7 @@ Architecture du projet:
   nv.html / nv.js   → Pages et scripts supplémentaires (copies)
   README.md         → Fichier de documentation du projet
 
-Résultats écologiques:
-  Score : A (90/100)
+## 🌿 Résultats écologiques:
+  Score : A+ (95/100)
   Taille moyenne des pages : 0,246 Mo
   Nombre moyen de requêtes : 11
