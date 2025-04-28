@@ -49,6 +49,6 @@ Architecture du projet:
   README.md         → Fichier de documentation du projet
 
 ## 🌿 Résultats écologiques:
-  Score : A+ (95/100)
-  Taille moyenne des pages : 0,246 Mo
+  Score : A+ (95/100)/
+  Taille moyenne des pages : 0,246 Mo/
   Nombre moyen de requêtes : 11
