@@ -239,6 +239,7 @@ header {
 .upgrade:hover .next-level-info{
     display: block;
 }
+
 .statistics{
     position: absolute;
     bottom: 0;
@@ -257,7 +258,6 @@ header {
     font-weight: bold ;
     font-size: 22px;
 }
-
 
 #error-message {
     color: #ff4d4d;
